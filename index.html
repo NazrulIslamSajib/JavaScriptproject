@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title> 
+  
+</head>
+<body>
+  
+ <!-- <link rel="stylesheet" href="index.css"> -->   
+   <h1>Created by Sajib</h1>
+   
+   <div class="mywatch">  
+
+   <span class="H"></span> 
+   <span class="M"></span>  
+   <br>
+   <span class="date"></span>
+
+   </div>   
+   <script>
+    function mytime()
+{
+    var myDate= new Date();/// new date ekta object   
+    var min=(myDate.getMinutes()<10) ? "0"+myDate.getMinutes() : myDate.getMinutes();
+    var sec=(myDate.getSeconds()<10) ? "0"+myDate.getSeconds() : myDate.getSeconds();
+    var hr=myDate.getHours(); 
+    var M=(myDate.getHours()>=12) ? "PM" : "AM"; 
+    if(myDate.getHours()==0)
+    {
+        hr=12;
+    } 
+    else if(myDate.getHours()>12)
+    {
+        hr=myDate.getHours()%12;
+    } 
+    else 
+    {
+         hr=myDate.getHours();
+    } 
+    var currentTime= hr + ":" + min+":"+sec; 
+    document.getElementsByClassName("H")[0].innerHTML=currentTime;
+    document.getElementsByClassName("M")[0].innerHTML=M;
+    var myday=["sunday","monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var mymonth=["January","February","March","April","May","June","july","August","September","October","November","December"];
+    var day=myDate.getDate();
+    var currentDate=myday[myDate.getDay()]+","+mymonth[myDate.getMonth()]+","+day; 
+    document.getElementsByClassName("date")[0].innerHTML=currentDate; 
+     
+} 
+mytime();
+setInterval(function()
+{
+    mytime();
+},1000);
+   </script> 
+   <style>
+
+body{
+  background-image:url(vintage-clock.jpg);
+  background-repeat: no-repeat; 
+  background-size: cover; 
+  background-attachment: fixed; 
+  background-position:center center; 
+} 
+.mywatch{
+  background-color:whitesmoke; 
+  border-radius: 5px;
+  padding: 50px; 
+  top:30%;
+  left:25%; 
+  position: fixed;
+} 
+span{
+  font-size: 70px;
+} 
+h1 {
+    /* Styling for the h1 tag */
+    font-size:25px;
+    color: #333;
+    margin: 0; 
+    padding: 10px; 
+    position: absolute;
+    bottom: 20px; 
+    left: 20px; 
+    font-family: 'Times New Roman', Times, serif; 
+    font-style: italic; 
+}
+   </style>
+
+</body>
+</html>
